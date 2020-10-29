@@ -1,0 +1,49 @@
+### Exercise 9
+setwd("/Users/Lucia/Desktop/bio9exercise")
+
+# define the name of the function 
+# calculate the coefficient of variation (standard deviation divided by the mean) for a user specified column
+# this column is called "usercolumn"
+obtaincolumncovar <- function(dir, usercolumn){ 
+  # use a for loop to run through each file in the directory and make sure user is okay with number of observations
+  # open an empty vector and allcovars to put each coefficient of variation in it
+  allcovars <- c()
+  # the file is called "userfile"
+  for(i in dir){
+    userfile=read.csv(file=i, header=FALSE, sep=",")
+    # now take the second user input, usercolumn, and find the coefficient of variation
+    covar=(sd(userfile[, usercolumn]))/(mean(userfile[, usercolumn]))
+    # if statment included for when there are less than 50 observations in the file
+    if(nrow(userfile<50)){
+      # if there are less than 50 observations, the user is shown an override
+      # if the user chooses YES for the override, the file is included, and if not, the function does not run
+      override=readline(prompt= "There are less than 50 observations. Would you like to include?")
+      if(override == "YES"){
+        # then the observations are added to the final vector by combining the covariables from all the files into a single vector
+        allcovars <- c(allcovars, covar)
+      }
+    else{
+      next
+    }
+    }
+    # if there are more than 50 observations, add the files ....
+    else{
+      allcovars <- c(allcovars,covar)
+    }
+  }
+  # if the file contains NAs, the user is shown an override
+  # if the user chooses YES for the override, the file is included, if not, the function does not run
+  override=readline(prompt= "There are NAs in this file. Would you like to include?")
+  if(override == "YES"){
+    # then the NAs are added to the final vector by combining the covariables from all the files into a single vector
+    allcovars <- c(allcovars, covar)
+  }
+  return(allcovars)
+}
+
+# specify the path of the directory
+user_dir <- list.files(path = "/Users/Lucia/Desktop/bio9exercise")
+# call the function with user_dir as the directory of choice
+obtaincolumncovar(dir=user_dir, usercolumn = 4)
+
+
