@@ -5,8 +5,8 @@ setwd("/Users/Lucia/Desktop/bio9exercise")
 # calculate the coefficient of variation (standard deviation divided by the mean) for a user specified column
 # this column is called "usercolumn"
 obtaincolumncovar <- function(dir, usercolumn){ 
-  # use a for loop to run through each file in the directory and then ...
-  # open an empty vector and allcovars to put each coefficient of variation ....
+  # use a for loop to run through each file in the directory and make sure user is okay with number of observations
+  # open an empty vector and allcovars to put each coefficient of variation in it
   allcovars <- c()
   # the file is called "userfile"
   for(i in dir){
