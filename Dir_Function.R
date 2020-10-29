@@ -7,7 +7,16 @@ setwd("/Users/isaaclickona/tut9/Biocomputing2020_Exercise09")
 
 dir = "/Users/isaaclickona/testerdirectory/"
 
+
+
 cofunc <- function(dir) {
+  
+  
+  
+  
+  
+  
+  
   #First, find all the files in the directory and their names
   filenames = list.files(dir)
   filenames
@@ -22,8 +31,23 @@ cofunc <- function(dir) {
     #get file name as a character"
     conc <- c(dir,filenames[i])
     concy <- paste0(conc[1],conc[2])
+    #Read file and store in temporary variable that will be overwritten
     tempvar <- read.csv(paste0(conc[1],conc[2]), header=FALSE)
-    filedata[i] <- tempvar
+    
+    #Perform calculation on specified column usercol
+    avg = mean(tempvar[,usercol])
+    stdv = sd(tempvar[,usercol])
+    cv <- stdv/avg
+    
+    
     
   }
 }
+
+
+
+
+
+
+
+
