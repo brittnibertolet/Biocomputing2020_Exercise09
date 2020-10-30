@@ -5,38 +5,22 @@
 ## set default of 50 obs, report an error if fewer than 50
 ## function includes NA data
 
+# create an empty variable
 files <- c()
-lst <- vector("list", length(files))
-names(lst) <- files
 
-coeffvar <- function(d, colname){
-  files <- dir(d, pattern = "*.csv")
-  for (i in 1:nrow(files)){
-    if (nrow(i$colname) < 50){
-    print("ERROR; file has fewer than 50 observations")
-  } else {
-    sd(i$colname)/mean(i$colname)
-    }
-  }
-}
 
-coeffvar("~/Desktop/Bioinformatics/Biocomputing2020_Exercise09/", observations)
-
-# ^ that didn't quite work...
-# attempt 2
-
-files <- dir("~/Desktop/Bioinformatics/Biocomputing2020_Exercise09/", pattern="*.csv")
-lst <- vector("list", length(files))
-names(lst) <- files
-
-coeffvar <- function(d, colname){
+coeffvar <- function(d, x){
   for (i in 1:length(files)){
-  tmp <- read.csv(files[i], stringsAsFactors = FALSE)
-  if (length(i$colname) < 50){
-    print("ERROR; file has fewer than 50 observations")
-  } else {
-    sd(i$colname)/mean(i$colname)
+    # read in files
+    tmp <- read.csv(files[i], stringsAsFactors = FALSE)
+    # if statement for obs <50
+    if (length(i$x) < 50){
+      print("ERROR; file has fewer than 50 observations")
+      } else {
+        sd(i$colname)/mean(i$colname)
+      }
   }
   }
-}
+
+# run the function
 coeffvar("~/Desktop/Bioinformatics/Biocomputing2020_Exercise09/",observations)
