@@ -3,7 +3,7 @@
 #dir is a directory specified with the absolute path and must end in a "/"
 #usercol is the number column the user would like analayzed in all the files contained in dir
 
-dir = "/Users/isaaclickona/testerdirectory/"
+#dir = "/Users/isaaclickona/testerdirectory/" #Just used to practice/check work
 
 #Create function with argument dir
 cofunc <- function(dir,usercol) {
@@ -21,7 +21,7 @@ cofunc <- function(dir,usercol) {
     #Read file and store in temporary variable that will be overwritten
     tempvar <- read.csv(paste0(conc[1],conc[2]), header=TRUE)
     
-    if (usercol > ncol(tempvar)){
+    if (usercol > ncol(tempvar)){ #         #Make sure table has enough columns or prompt user to re-pick
       paste("Please choose a column between 1 and", ncol(tempvar))
       usercol <- scan(nmax)
     } else {
