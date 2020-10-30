@@ -1,19 +1,16 @@
 # Tutorial 9 Function
+#Usage: cofunc(dir, usercol)
+#dir is a directory specified with the absolute path and must end in a "/"
+#usercol is the number column the user would like analayzed in all the files contained in dir
 
 dir = "/Users/isaaclickona/testerdirectory/"
 
 #Create function with argument dir
-cofunc <- function(dir) {
+cofunc <- function(dir,usercol) {
   
   #First, find all the files in the directory and their names
   filenames = list.files(dir)
   filenames
-  
-  #Get user specified column 
-  message <- "Please choose which column to perform calculations on"
-  message
-  usercol <- scan(nmax=1)
-  if (usercol)
 
   #Read in the files using the names from the filenames vector
   filedata <- 1:length(filenames)
@@ -26,8 +23,9 @@ cofunc <- function(dir) {
     
     if (usercol > ncol(tempvar)){
       paste("Please choose a column between 1 and", ncol(tempvar))
+      usercol <- scan(nmax)
     } else {
-      print("Loading...")
+      print("...")
   }
     
     
